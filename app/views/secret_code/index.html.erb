@@ -1,0 +1,19 @@
+<% if user_signed_in? %>
+<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+<% end %>
+<%= form_tag("create") do %>
+  <%= select_tag(:num, options_for_select([['1',1],['10', 10], ['20', 20],['50',50],['100',100]], 1)) %>
+  <%= submit_tag("Search") %>
+<% end %>
+<table class="table">
+	<tr>
+		<th> Code </th>
+		<th> Email Adress </th>
+	</tr>
+	<% @codes.each do |c| %>
+		<tr>
+		<td><%= c.code %></td>
+		<td><%= c.email %></td>
+		</tr>
+	<%end%>
+</table>
